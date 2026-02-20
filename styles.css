@@ -42,22 +42,18 @@ body {
   align-items: center;
   gap: 12px;
   padding: 18px 32px;
-  background: rgba(30, 30, 30, 0.75);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .nav-btn {
-  background: transparent;
-  color: var(--white);
+  background-color: whitesmoke;
+  color: var(--black);
   font-family: "roc-grotesk", sans-serif;
   font-weight: 400;
   font-size: 18px;
   padding: 8px 24px;
   border-radius: 100px;
   text-decoration: none;
-  border: 1px solid var(--bg);
-  outline: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid var(--black);
   transition: background 0.15s, color 0.15s;
 }
 
@@ -204,6 +200,7 @@ body {
   border-radius: 100px;
   border: 2px solid rgba(0, 0, 0, 0.15);
   margin-bottom: 20px;
+  z-index: 90;
 }
 
 .s-heading {
@@ -213,6 +210,7 @@ body {
   line-height: 1.0;
   letter-spacing: -0.01em;
   margin-bottom: 20px;
+  z-index: 99;
 }
 
 .s-heading .blue { color: var(--blue); }
@@ -348,11 +346,12 @@ body {
 .journey-header {
   text-align: center;
   margin-bottom: 80px;
+  z-index: 4;
 }
 
 .journey-header p {
   font-size: 17px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(255, 255, 255);
   margin-top: 14px;
 }
 
@@ -459,8 +458,8 @@ body {
 .step.active .step-card { opacity: 1; transform: translateX(0); }
 
 .step-inner {
-  background: #222222;
-  border: 2px solid rgba(255, 255, 255, 0.07);
+  background-color:  rgb(43, 110, 255);
+  border: 2px solid rgba(255, 255, 255, 0.713);
   border-radius: 16px;
   padding: 26px;
   transition: border-color 0.4s;
@@ -502,24 +501,24 @@ body {
 }
 
 .chip {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.329);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   padding: 4px 11px;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(255, 255, 255);
 }
 
 .step-outcome {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  background: rgba(49, 113, 255, 0.07);
+  background: rgba(255, 255, 255, 0.355);
   border: 1px solid rgba(49, 113, 255, 0.2);
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 13px;
-  color: #93c5fd;
+  color: #ffffff;
   line-height: 1.5;
 }
 
@@ -576,15 +575,15 @@ body {
 }
 
 .card {
-  background: #222222;
-  border: 2px solid rgba(255, 255, 255, 0.07);
+  background: #f4f4f4c0;
+  border: 3px solid rgba(255, 255, 255, 0.07);
   border-radius: 16px;
   padding: 28px;
   transition: border-color 0.2s, transform 0.2s;
 }
 
 .card:hover {
-  border-color: rgba(49, 113, 255, 0.3);
+  border-color: #3171FF;
   transform: translateY(-4px);
 }
 
@@ -612,13 +611,13 @@ body {
 
 .src-label {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgb(25, 25, 25);
   font-weight: 500;
 }
 
 .card-quote {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(50, 50, 50, 0.85);
   line-height: 1.7;
   margin-bottom: 22px;
   font-style: italic;
@@ -630,7 +629,7 @@ body {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
+  background: #3171FF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -641,8 +640,15 @@ body {
   flex-shrink: 0;
 }
 
-.author-name { font-size: 14px; font-weight: 700; }
-.author-role { font-size: 12px; color: rgba(255, 255, 255, 0.38); margin-top: 2px; }
+.author-name { color: rgb(25, 25, 25); font-size: 14px; font-weight: 700; }
+.author-role { font-size: 12px; color: #3171FF; margin-top: 2px; }
+
+.humans-badge {
+  margin-top: 40px;
+  width: 160px;
+  opacity: 0.8;
+  margin-left: 1%;
+}
 
 
 /* ── BOTTOM CTA ── */
