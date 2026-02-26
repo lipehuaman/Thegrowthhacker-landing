@@ -1,12 +1,11 @@
 /* ═══════════════════════════════════════════
-   The Growth Hacker — script.js
+   The Growth Hacker — script.js - by @lipehuaman
    ═══════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ─────────────────────────────────────────
      1. SPEECH BUBBLE ORBIT
-     Runs independently — no external deps.
      ───────────────────────────────────────── */
 
   var bubbles     = Array.from(document.querySelectorAll('.bubble'));
@@ -19,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var sw = scene.offsetWidth;
     var sh = scene.offsetHeight;
+    if (sw === 0 || sh === 0) { requestAnimationFrame(updateBubbles); return; }
+
     var cx = sw / 2;
     var cy = sh / 2;
     var rx = Math.min(sw * 0.38, 340);
@@ -35,43 +36,27 @@ document.addEventListener('DOMContentLoaded', function () {
       bub.style.left = (bx - bw / 2) + 'px';
       bub.style.top  = (by - bh / 2) + 'px';
 
-      /* ── Tail: always points toward center ── */
+      /* ── Tail: solo si existe en el HTML ── */
       var tail = bub.querySelector('.bubble-tail');
-      if (!tail) return;
-
-      // Vector from this bubble's center to scene center
-      var dx = cx - bx;
-      var dy = cy - by;
-      var dist = Math.sqrt(dx * dx + dy * dy);
-
-      // Normalised direction
-      var nx = dx / dist;
-      var ny = dy / dist;
-
-      // Place the tail at the bubble edge closest to center.
-      // We find which face (top/right/bottom/left) is nearest to center
-      // by projecting the normal onto the bubble rect.
-      var edgeX, edgeY;
-      var hw = bw / 2;
-      var hh = bh / 2;
-
-      // Scale factor to reach the bubble edge along (nx, ny)
-      var tx = (nx !== 0) ? hw / Math.abs(nx) : Infinity;
-      var ty = (ny !== 0) ? hh / Math.abs(ny) : Infinity;
-      var t  = Math.min(tx, ty);
-
-      // Edge point in bubble-local coords (relative to bubble top-left)
-      edgeX = hw + nx * t;
-      edgeY = hh + ny * t;
-
-      // The tail triangle points "up" by default (border-top).
-      // We need it to rotate so it points toward center (angle of nx,ny).
-      var deg = Math.atan2(ny, nx) * (180 / Math.PI) + 90; // +90 because default "up" = 270° in atan2
-
-      tail.style.left            = (edgeX - 12) + 'px'; // 12 = half of border-width 12px
-      tail.style.top             = (edgeY - 12) + 'px';
-      tail.style.transformOrigin = '12px 12px';           // rotate around the center of the triangle base
-      tail.style.transform       = 'rotate(' + deg + 'deg)';
+      if (tail) {
+        var dx = cx - bx;
+        var dy = cy - by;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var nx = dx / dist;
+        var ny = dy / dist;
+        var hw = bw / 2;
+        var hh = bh / 2;
+        var tx = (nx !== 0) ? hw / Math.abs(nx) : Infinity;
+        var ty = (ny !== 0) ? hh / Math.abs(ny) : Infinity;
+        var t  = Math.min(tx, ty);
+        var edgeX = hw + nx * t;
+        var edgeY = hh + ny * t;
+        var deg = Math.atan2(ny, nx) * (180 / Math.PI) + 90;
+        tail.style.left            = (edgeX - 12) + 'px';
+        tail.style.top             = (edgeY - 12) + 'px';
+        tail.style.transformOrigin = '12px 12px';
+        tail.style.transform       = 'rotate(' + deg + 'deg)';
+      }
     });
 
     bubbleAngle += SPEED;
@@ -83,8 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ─────────────────────────────────────────
      2. DRAGGABLE STICKERS — GSAP
-     Loaded dynamically so it doesn't block
-     anything else if CDN is slow.
      ───────────────────────────────────────── */
 
   function loadScript(src, cb) {
@@ -100,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var stickers = document.querySelectorAll('.sticker');
 
-      // Idle float — pause on drag, resume on release
       stickers.forEach(function (el, i) {
         gsap.to(el, {
           y:        '+=12',
@@ -154,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var totalH    = inner.offsetHeight;
     var innerRect = inner.getBoundingClientRect();
-    if (totalH === 0) return; // layout not ready yet
+    if (totalH === 0) return;
 
     var dotYs = [];
     steps.forEach(function (step) {
@@ -169,12 +151,13 @@ document.addEventListener('DOMContentLoaded', function () {
     svg.setAttribute('viewBox', '0 0 120 ' + totalH);
     svg.setAttribute('height',  totalH);
 
-    var mid = 60; // centerline of the 120px-wide SVG
-    var amp = 26; // wiggle amplitude
-    var d   = 'M ' + mid + ' 0 ';
+    var mid = 60;
+    var amp = 26;
+var d   = 'M ' + mid + ' ' + dotYs[0] + ' ';
 
-    dotYs.forEach(function (y, i) {
-      var prevY  = i === 0 ? 0 : dotYs[i - 1];
+dotYs.forEach(function (y, i) {
+  if (i === 0) return; // salta el primer dot, ya empezamos ahí
+  var prevY  = dotYs[i - 1];
       var midY   = (prevY + y) / 2;
       var dir    = i % 2 === 0 ? 1 : -1;
       var wx     = mid + dir * amp;
@@ -197,12 +180,13 @@ document.addEventListener('DOMContentLoaded', function () {
     pathFill._len = len;
   }
 
-  // Wait for fonts + layout before measuring
   setTimeout(buildPath, 400);
+  window.addEventListener('load', function () { setTimeout(buildPath, 100); });
   window.addEventListener('resize', function () { setTimeout(buildPath, 150); });
 
   function onScroll() {
-    if (!pathFill || !pathFill._len) return;
+    if (!pathFill) return;
+    if (!pathFill._len) { buildPath(); return; }
 
     var inner   = document.querySelector('.journey-inner');
     if (!inner) return;
@@ -213,7 +197,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     pathFill.style.strokeDashoffset = pathFill._len * (1 - pct);
 
-    // Activate steps when line tip passes each dot
     var innerTop = rect.top + window.pageYOffset;
     var lineTip  = innerTop + pct * totalH;
 

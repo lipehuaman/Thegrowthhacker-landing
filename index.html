@@ -85,19 +85,15 @@
 
         <!-- 4 speech bubbles — color classes match palette -->
         <div class="bubble purple" data-index="0">
-          <div class="bubble-tail"></div>
           <span>"We don't know where the biggest conversion leaks are"</span>
         </div>
         <div class="bubble red" data-index="1">
-          <div class="bubble-tail"></div>
           <span>"Our data doesn't line up, and we don't fully trust it"</span>
         </div>
         <div class="bubble green" data-index="2">
-          <div class="bubble-tail"></div>
           <span>"We have traffic but conversions are flat"</span>
         </div>
         <div class="bubble yellow" data-index="3">
-          <div class="bubble-tail"></div>
           <span>"Drop-off is higher than expected across the funnel"</span>
         </div>
 
@@ -107,130 +103,156 @@
   </section>
 
 
-  <!-- ══════════════════════════════════
-       JOURNEY / STEPS
-  ═══════════════════════════════════ -->
-  <section class="journey" id="journey">
-    <div class="journey-inner">
+ <!-- ══════════════════════════════════
+     JOURNEY / STEPS
+═══════════════════════════════════ -->
+<section class="journey" id="journey">
+  <div class="journey-inner">
 
-      <div class="journey-header">
-        <span class="s-label">Service as a Journey</span>
-        <h2 class="s-heading">I don't sell tasks.<br /><span class="red">I sell movements.</span></h2>
-        <p>Five steps from context to clarity — each one building on the last.</p>
-      </div>
-
-      <!-- Wavy scroll-driven SVG line -->
-      <div class="line-svg-wrap">
-        <svg id="waveSvg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"   stop-color="#048DFF"/>
-              <stop offset="50%"  stop-color="#00C476"/>
-              <stop offset="100%" stop-color="#FFB800"/>
-            </linearGradient>
-          </defs>
-          <path id="pathBg"   class="path-bg"   d=""/>
-          <path id="pathFill" class="path-fill" d=""/>
-        </svg>
-      </div>
-
-      <!-- STEP 1 -->
-      <div class="step left">
-        <div class="step-card">
-          <div class="step-inner">
-            <div class="step-n">First step</div>
-            <div class="step-title">Business & Context</div>
-            <p class="step-desc">Understand the business before the metrics. Conversions don't exist in isolation — what "success" means varies by business.</p>
-            <div class="step-chips">
-              <span class="chip">Business model</span>
-              <span class="chip">Revenue drivers</span>
-              <span class="chip">Goals & constraints</span>
-            </div>
-            <div class="step-outcome">Clear alignment on what actually needs to improve.</div>
-          </div>
-        </div>
-        <div class="step-mid"><div class="step-dot">1</div></div>
-        <div class="step-empty"></div>
-      </div>
-
-      <!-- STEP 2 -->
-      <div class="step right">
-        <div class="step-empty"></div>
-        <div class="step-mid"><div class="step-dot">2</div></div>
-        <div class="step-card">
-          <div class="step-inner">
-            <div class="step-n">Second step</div>
-            <div class="step-title">Digital Presence & Data Review</div>
-            <p class="step-desc">Understand what the data is (and isn't) telling us. If data can't be trusted, optimization decisions are guesswork.</p>
-            <div class="step-chips">
-              <span class="chip">Funnel structure</span>
-              <span class="chip">Conversion points</span>
-              <span class="chip">Analytics sanity check</span>
-            </div>
-            <div class="step-outcome">Confidence in what signals are reliable and what needs attention.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 3 -->
-      <div class="step left">
-        <div class="step-card">
-          <div class="step-inner">
-            <div class="step-n">Third step</div>
-            <div class="step-title">Audience & Intent</div>
-            <p class="step-desc">You can't optimize conversions without understanding why users behave the way they do. We define or refine personas, intent, motivations, and objections.</p>
-            <div class="step-chips">
-              <span class="chip">Target personas</span>
-              <span class="chip">User intent by stage</span>
-              <span class="chip">Motivations & objections</span>
-            </div>
-            <div class="step-outcome">A shared understanding of the user behind the data.</div>
-          </div>
-        </div>
-        <div class="step-mid"><div class="step-dot">3</div></div>
-        <div class="step-empty"></div>
-      </div>
-
-      <!-- STEP 4 -->
-      <div class="step right">
-        <div class="step-empty"></div>
-        <div class="step-mid"><div class="step-dot">4</div></div>
-        <div class="step-card">
-          <div class="step-inner">
-            <div class="step-n">Fourth step</div>
-            <div class="step-title">Customer Journey Mapping</div>
-            <p class="step-desc">Most conversion issues are journey problems, not page problems. We map entry points, decision moments, and drop-off points end-to-end.</p>
-            <div class="step-chips">
-              <span class="chip">Entry points</span>
-              <span class="chip">Decision moments</span>
-              <span class="chip">Drop-off points</span>
-            </div>
-            <div class="step-outcome">Visibility into where users struggle and why.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 5 -->
-      <div class="step left">
-        <div class="step-card">
-          <div class="step-inner">
-            <div class="step-n">Fifth step</div>
-            <div class="step-title">Opportunity Identification & Next Steps</div>
-            <p class="step-desc">Not everything should be optimized — focus creates results. We identify the biggest conversion leaks and define what's worth testing.</p>
-            <div class="step-chips">
-              <span class="chip">Conversion leaks</span>
-              <span class="chip">Impact prioritization</span>
-              <span class="chip">Test roadmap</span>
-            </div>
-            <div class="step-outcome">A clear CRO roadmap and direction for experimentation.</div>
-          </div>
-        </div>
-        <div class="step-mid"><div class="step-dot">5</div></div>
-        <div class="step-empty"></div>
-      </div>
-
+    <div class="journey-header">
+      <span class="s-label">Service as a Journey</span>
+      <h2 class="s-heading">I don't sell tasks.<br /><span class="red">I sell movements.</span></h2>
+      <p>Five steps from context to clarity — each one building on the last.</p>
     </div>
-  </section>
+
+    <!-- Wavy scroll-driven SVG line -->
+    <div class="line-svg-wrap">
+      <svg id="waveSvg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#048DFF"/>
+            <stop offset="50%"  stop-color="#00C476"/>
+            <stop offset="100%" stop-color="#FFB800"/>
+          </linearGradient>
+        </defs>
+        <path id="pathBg"   class="path-bg"   d=""/>
+        <path id="pathFill" class="path-fill" d=""/>
+      </svg>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step left">
+      <div class="step-card">
+        <div class="step-inner">
+          <div class="step-n">First step</div>
+          <div class="step-title">Business & Context</div>
+          <p class="step-desc">Understand the business before the metrics. Conversions don't exist in isolation — what "success" means varies by business.</p>
+          <div class="step-chips">
+            <span class="chip">Business model</span>
+            <span class="chip">Revenue drivers</span>
+            <span class="chip">Goals & constraints</span>
+          </div>
+          <div class="step-outcome">Clear alignment on what actually needs to improve.</div>
+        </div>
+      </div>
+      <div class="step-mid">
+        <div class="step-dot step-dot--blue">
+          <svg class="dot-star" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.183 11.9212L2.51356 11.4842C1.29738 11.4425 0.56663 12.8191 1.28227 13.803L4.16516 17.9781C4.48809 18.4224 4.53444 19.011 4.28495 19.5006L3.20316 21.6235C2.67658 22.6564 3.50577 23.8616 4.65893 23.7392L17.729 22.3522C17.8369 22.3407 17.9457 22.3413 18.0535 22.3538L29.3658 23.7882C30.5434 23.9267 31.3867 22.6777 30.8184 21.6371L28.721 17.5286C28.4772 17.0818 28.483 16.5406 28.7371 16.0994L29.6314 14.5468C30.2226 13.5202 29.4106 12.2535 28.2309 12.3629L23.6438 12.7884C23.4266 12.8087 23.2078 12.7796 23.0031 12.704L13.2123 9.09041C12.5695 8.85342 11.8482 9.09457 11.4778 9.67063L10.4617 11.2514C10.183 11.6842 9.69759 11.9389 9.183 11.9212Z" fill="currentColor"/></svg>
+          <span>1</span>
+        </div>
+      </div>
+      <div class="step-empty"></div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step right">
+      <div class="step-empty"></div>
+      <div class="step-mid">
+        <div class="step-dot step-dot--yellow">
+          <svg class="dot-star" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.183 11.9212L2.51356 11.4842C1.29738 11.4425 0.56663 12.8191 1.28227 13.803L4.16516 17.9781C4.48809 18.4224 4.53444 19.011 4.28495 19.5006L3.20316 21.6235C2.67658 22.6564 3.50577 23.8616 4.65893 23.7392L17.729 22.3522C17.8369 22.3407 17.9457 22.3413 18.0535 22.3538L29.3658 23.7882C30.5434 23.9267 31.3867 22.6777 30.8184 21.6371L28.721 17.5286C28.4772 17.0818 28.483 16.5406 28.7371 16.0994L29.6314 14.5468C30.2226 13.5202 29.4106 12.2535 28.2309 12.3629L23.6438 12.7884C23.4266 12.8087 23.2078 12.7796 23.0031 12.704L13.2123 9.09041C12.5695 8.85342 11.8482 9.09457 11.4778 9.67063L10.4617 11.2514C10.183 11.6842 9.69759 11.9389 9.183 11.9212Z" fill="currentColor"/></svg>
+          <span>2</span>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-inner">
+          <div class="step-n">Second step</div>
+          <div class="step-title">Digital Presence & Data Review</div>
+          <p class="step-desc">Understand what the data is (and isn't) telling us. If data can't be trusted, optimization decisions are guesswork.</p>
+          <div class="step-chips">
+            <span class="chip">Funnel structure</span>
+            <span class="chip">Conversion points</span>
+            <span class="chip">Analytics sanity check</span>
+          </div>
+          <div class="step-outcome">Confidence in what signals are reliable and what needs attention.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step left">
+      <div class="step-card">
+        <div class="step-inner">
+          <div class="step-n">Third step</div>
+          <div class="step-title">Audience & Intent</div>
+          <p class="step-desc">You can't optimize conversions without understanding why users behave the way they do. We define or refine personas, intent, motivations, and objections.</p>
+          <div class="step-chips">
+            <span class="chip">Target personas</span>
+            <span class="chip">User intent by stage</span>
+            <span class="chip">Motivations & objections</span>
+          </div>
+          <div class="step-outcome">A shared understanding of the user behind the data.</div>
+        </div>
+      </div>
+      <div class="step-mid">
+        <div class="step-dot step-dot--green">
+          <svg class="dot-star" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.183 11.9212L2.51356 11.4842C1.29738 11.4425 0.56663 12.8191 1.28227 13.803L4.16516 17.9781C4.48809 18.4224 4.53444 19.011 4.28495 19.5006L3.20316 21.6235C2.67658 22.6564 3.50577 23.8616 4.65893 23.7392L17.729 22.3522C17.8369 22.3407 17.9457 22.3413 18.0535 22.3538L29.3658 23.7882C30.5434 23.9267 31.3867 22.6777 30.8184 21.6371L28.721 17.5286C28.4772 17.0818 28.483 16.5406 28.7371 16.0994L29.6314 14.5468C30.2226 13.5202 29.4106 12.2535 28.2309 12.3629L23.6438 12.7884C23.4266 12.8087 23.2078 12.7796 23.0031 12.704L13.2123 9.09041C12.5695 8.85342 11.8482 9.09457 11.4778 9.67063L10.4617 11.2514C10.183 11.6842 9.69759 11.9389 9.183 11.9212Z" fill="currentColor"/></svg>
+          <span>3</span>
+        </div>
+      </div>
+      <div class="step-empty"></div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step right">
+      <div class="step-empty"></div>
+      <div class="step-mid">
+        <div class="step-dot step-dot--purple">
+          <svg class="dot-star" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.183 11.9212L2.51356 11.4842C1.29738 11.4425 0.56663 12.8191 1.28227 13.803L4.16516 17.9781C4.48809 18.4224 4.53444 19.011 4.28495 19.5006L3.20316 21.6235C2.67658 22.6564 3.50577 23.8616 4.65893 23.7392L17.729 22.3522C17.8369 22.3407 17.9457 22.3413 18.0535 22.3538L29.3658 23.7882C30.5434 23.9267 31.3867 22.6777 30.8184 21.6371L28.721 17.5286C28.4772 17.0818 28.483 16.5406 28.7371 16.0994L29.6314 14.5468C30.2226 13.5202 29.4106 12.2535 28.2309 12.3629L23.6438 12.7884C23.4266 12.8087 23.2078 12.7796 23.0031 12.704L13.2123 9.09041C12.5695 8.85342 11.8482 9.09457 11.4778 9.67063L10.4617 11.2514C10.183 11.6842 9.69759 11.9389 9.183 11.9212Z" fill="currentColor"/></svg>
+          <span>4</span>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-inner">
+          <div class="step-n">Fourth step</div>
+          <div class="step-title">Customer Journey Mapping</div>
+          <p class="step-desc">Most conversion issues are journey problems, not page problems. We map entry points, decision moments, and drop-off points end-to-end.</p>
+          <div class="step-chips">
+            <span class="chip">Entry points</span>
+            <span class="chip">Decision moments</span>
+            <span class="chip">Drop-off points</span>
+          </div>
+          <div class="step-outcome">Visibility into where users struggle and why.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step left">
+      <div class="step-card">
+        <div class="step-inner">
+          <div class="step-n">Fifth step</div>
+          <div class="step-title">Opportunity Identification & Next Steps</div>
+          <p class="step-desc">Not everything should be optimized — focus creates results. We identify the biggest conversion leaks and define what's worth testing.</p>
+          <div class="step-chips">
+            <span class="chip">Conversion leaks</span>
+            <span class="chip">Impact prioritization</span>
+            <span class="chip">Test roadmap</span>
+          </div>
+          <div class="step-outcome">A clear CRO roadmap and direction for experimentation.</div>
+        </div>
+      </div>
+      <div class="step-mid">
+        <div class="step-dot step-dot--blue">
+<svg class="dot-star" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.183 11.9212L2.51356 11.4842C1.29738 11.4425 0.56663 12.8191 1.28227 13.803L4.16516 17.9781C4.48809 18.4224 4.53444 19.011 4.28495 19.5006L3.20316 21.6235C2.67658 22.6564 3.50577 23.8616 4.65893 23.7392L17.729 22.3522C17.8369 22.3407 17.9457 22.3413 18.0535 22.3538L29.3658 23.7882C30.5434 23.9267 31.3867 22.6777 30.8184 21.6371L28.721 17.5286C28.4772 17.0818 28.483 16.5406 28.7371 16.0994L29.6314 14.5468C30.2226 13.5202 29.4106 12.2535 28.2309 12.3629L23.6438 12.7884C23.4266 12.8087 23.2078 12.7796 23.0031 12.704L13.2123 9.09041C12.5695 8.85342 11.8482 9.09457 11.4778 9.67063L10.4617 11.2514C10.183 11.6842 9.69759 11.9389 9.183 11.9212Z" fill="currentColor"/></svg>
+          <span>5</span>
+        </div>
+      </div>
+      <div class="step-empty"></div>
+    </div>
+
+  </div>
+</section>
+
 
 
   <!-- ══════════════════════════════════
@@ -284,7 +306,7 @@
         </div>
 
       </div>
-      <div><img class="humans-badge" src="./Assets/humans_badge_2.png" alt="Made by humans"></div>
+      <div><img class="humans-badge" src="./Assets/humans_badge_3.png" alt="Made by humans"></div>
     </div>
   </section>
 

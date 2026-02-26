@@ -346,7 +346,25 @@ body {
 .journey-header {
   text-align: center;
   margin-bottom: 80px;
+  position: relative;
   z-index: 4;
+}
+
+.journey-header::after {
+  display: none;  /* elimínalo o bórralo */
+}
+
+.journey-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 260px;   /* ajusta al alto de tu header */
+  background: var(--bg);
+  z-index: 3;
+  pointer-events: none;
 }
 
 .journey-header p {
@@ -360,7 +378,7 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 0;
+  top: 0;  /* ajusta este valor hasta que quede justo debajo del título */
   width: 120px;
   bottom: 0;
   pointer-events: none;
@@ -371,9 +389,9 @@ body {
   width: 100%;
   height: 100%;
   overflow: visible;
+  display: block;
 }
 
-/* The dim background path */
 .path-bg {
   fill: none;
   stroke: rgba(255,255,255,0.06);
@@ -381,7 +399,6 @@ body {
   stroke-linecap: round;
 }
 
-/* The animated fill path */
 .path-fill {
   fill: none;
   stroke: url(#lineGrad);
@@ -389,14 +406,12 @@ body {
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  /* dasharray/offset driven by JS */
 }
 
-/* Steps — alternating left/right layout */
+/* Steps */
 .step {
   display: grid;
   grid-template-columns: 1fr 120px 1fr;
-  gap: 0 0;
   position: relative;
   z-index: 1;
   min-height: 200px;
@@ -421,29 +436,48 @@ body {
   z-index: 2;
 }
 
+/* ── STEP DOT — estrella SVG ── */
 .step-dot {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 3px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "roc-grotesk", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.25);
-  transition: all 0.4s ease;
   flex-shrink: 0;
 }
 
-.step.active .step-dot {
-  border-color: var(--blue);
-  color: var(--white);
-  background: rgba(49, 113, 255, 0.15);
-  box-shadow: 0 0 28px rgba(49, 113, 255, 0.45);
+/* Colores por variante — currentColor controla el fill del SVG */
+.step-dot--blue   { color: #2E9EF5; }
+.step-dot--yellow { color: #F5A800; }
+.step-dot--green  { color: #1DB85C; }
+.step-dot--purple { color: #8B6FE8; }
+
+/* Estrella inactiva: gris apagado */
+.dot-star {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  transition: opacity 0.4s ease;
 }
+
+/* Estrella activa: color completo */
+.step.active .dot-star { opacity: 1; }
+
+/* Número */
+.step-dot span {
+  position: relative;
+  z-index: 1;
+  font-family: "roc-grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.2);
+  transition: color 0.4s ease;
+}
+
+.step.active .step-dot span { color: var(--white); }
 
 .step-empty { grid-row: 1; }
 
@@ -458,8 +492,8 @@ body {
 .step.active .step-card { opacity: 1; transform: translateX(0); }
 
 .step-inner {
-  background-color:  rgb(43, 110, 255);
-  border: 2px solid rgba(255, 255, 255, 0.713);
+  background: #222222;
+  border: 2px solid rgba(255, 255, 255, 0.07);
   border-radius: 16px;
   padding: 26px;
   transition: border-color 0.4s;
@@ -501,24 +535,24 @@ body {
 }
 
 .chip {
-  background: rgba(255, 255, 255, 0.329);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   padding: 4px 11px;
   font-size: 11px;
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .step-outcome {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.355);
+  background: rgba(49, 113, 255, 0.07);
   border: 1px solid rgba(49, 113, 255, 0.2);
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 13px;
-  color: #ffffff;
+  color: #93c5fd;
   line-height: 1.5;
 }
 
