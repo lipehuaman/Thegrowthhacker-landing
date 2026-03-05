@@ -99,6 +99,25 @@ body {
   pointer-events: none;
 }
 
+/* ── FUNNEL CHARACTER ── */
+.funnel-character {
+  position: absolute;
+  width: 160px;
+  height: 150px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  z-index: 10;
+  transform-origin: center center;
+}
+
+.funnel-character:active { cursor: grabbing; }
+
+#funnelLottie {
+  width: 100%;
+  height: 100%;
+}
+
 /* ── FLOATING STICKERS ── */
 .sticker {
   position: absolute;
@@ -138,7 +157,7 @@ body {
   color: var(--white);
   -webkit-text-stroke: 3px var(--blue);
   paint-order: stroke fill;
-  max-width: 1100px;
+  max-width: 1250px;
   position: relative;
   z-index: 2;
 }
@@ -150,7 +169,7 @@ body {
   font-weight: 400;
   font-size: clamp(16px, 1.8vw, 20px);
   color: rgba(255, 255, 255, 0.65);
-  max-width: 520px;
+  max-width: 800px;
   margin: 28px auto 44px;
   line-height: 1.65;
   position: relative;
@@ -276,7 +295,7 @@ body {
   z-index: 10;
   text-align: center;
   pointer-events: none;
-  width: 220px;
+  width: 280px;
 }
 
 .bubble-center span {
@@ -604,78 +623,114 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
 }
 
+/* ── SLACK CARD ── */
 .card {
-  background: #f4f4f4c0;
-  border: 3px solid rgba(255, 255, 255, 0.07);
-  border-radius: 16px;
-  padding: 28px;
-  transition: border-color 0.2s, transform 0.2s;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: none;
 }
 
 .card:hover {
-  border-color: #3171FF;
-  transform: translateY(-4px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
 
-.card-src {
+.slack-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
-.src-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 700;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.src-icon.slack { background: #4A154B; color: #fff; }
-.src-icon.li    { background: #0077B5; color: #fff; font-size: 11px; font-family: "roc-grotesk", sans-serif; font-weight: 700; }
-
-.src-label {
-  font-size: 12px;
-  color: rgb(25, 25, 25);
-  font-weight: 500;
-}
-
-.card-quote {
-  font-size: 15px;
-  color: rgba(50, 50, 50, 0.85);
-  line-height: 1.7;
-  margin-bottom: 22px;
-  font-style: italic;
-}
-
-.card-author { display: flex; align-items: center; gap: 12px; }
-
-.avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
+.slack-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
   background: #3171FF;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "roc-grotesk", sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  border: 2px solid rgba(255, 255, 255, 0.12);
+  font-size: 14px;
+  color: #fff;
   flex-shrink: 0;
 }
 
-.author-name { color: rgb(25, 25, 25); font-size: 14px; font-weight: 700; }
-.author-role { font-size: 12px; color: #3171FF; margin-top: 2px; }
+.slack-avatar.green  { background: #1DB85C; }
+.slack-avatar.yellow { background: #F5A800; color: #000; }
+.slack-avatar.purple { background: #8B6FE8; }
+.slack-avatar.red    { background: #FF6B4A; }
+
+.slack-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.slack-name {
+  font-family: "roc-grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1a1a1a;
+}
+
+.slack-time {
+  font-size: 12px;
+  color: #999;
+}
+
+.slack-msg {
+  font-size: 15px;
+  color: #1a1a1a;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.slack-reactions {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f0f0f0;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 13px;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.reaction.active {
+  background: #e8effe;
+  border-color: #3171FF;
+  color: #3171FF;
+}
+
+.reaction:hover {
+  background: #e8effe;
+  border-color: #3171FF;
+}
+
+.slack-role {
+  font-size: 11px;
+  color: #999;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+}
 
 .humans-badge {
   margin-top: 40px;
@@ -706,14 +761,14 @@ body {
 }
 
 .bottom-cta .s-heading {
-  max-width: 680px;
+  max-width: 780px;
   margin: 0 auto 16px;
 }
 
 .bottom-cta p {
   font-size: 17px;
   color: rgba(255, 255, 255, 0.5);
-  max-width: 440px;
+  max-width: 600px;
   margin: 0 auto 40px;
   line-height: 1.6;
 }

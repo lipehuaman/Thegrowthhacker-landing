@@ -6,7 +6,7 @@
   <title>The Growth Hacker — CRO Discovery</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="/Assets/Favicon.svg" />
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <!-- Adobe Typekit — Roc Grotesk -->
   <link rel="stylesheet" href="https://use.typekit.net/fpf6ipy.css" />
 
@@ -30,9 +30,15 @@
   <section class="hero">
     <div class="hero-circle"></div>
     <div class="hero-circle2"></div>
-
+<div class="funnel-character" id="keywrdChar" style="top:12%; left:4%; transform: rotate(8deg);">
+  <div id="keywrdLottie"></div>
+</div>
     <!-- Draggable stickers -->
-    <span class="sticker white"  style="top:13%; right:10%">CRO</span>
+    <span class="sticker white"  style="top:20%; left: 30%;">CRO</span>
+    <!-- Funnel character -->
+<div class="funnel-character" id="funnelChar" style="top:18%; right:5%; transform: rotate(-10deg);">
+  <div id="funnelLottie"></div>
+</div>
     <span class="sticker green"  style="top:22%; right:26%">Analytics</span>
     <span class="sticker yellow" style="bottom:24%; right:9%">SEO</span>
     <span class="sticker blue"   style="bottom:32%; right:30%">Data</span>
@@ -82,7 +88,7 @@
 
         <!-- Center anchor text -->
         <div class="bubble-center" id="bubbleCenter">
-          <span>Possible problems<br/>I will help you solve:</span>
+          <span>Possible problems I will help you solve:</span>
         </div>
 
         <!-- 4 speech bubbles — color classes match palette -->
@@ -121,11 +127,13 @@
     <div class="line-svg-wrap">
       <svg id="waveSvg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <defs>
-          <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#048DFF"/>
-            <stop offset="50%"  stop-color="#00C476"/>
-            <stop offset="100%" stop-color="#FFB800"/>
-          </linearGradient>
+         <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%"   stop-color="#048DFF"/>
+  <stop offset="25%"  stop-color="#FFB800"/>
+  <stop offset="50%"  stop-color="#00C476"/>
+  <stop offset="65%"  stop-color="#9173FF"/>
+  <stop offset="85%" stop-color="#048DFF"/>
+</linearGradient>
         </defs>
         <path id="pathBg"   class="path-bg"   d=""/>
         <path id="pathFill" class="path-fill" d=""/>
@@ -258,59 +266,125 @@
 
 
   <!-- ══════════════════════════════════
-       SOCIAL PROOF
-  ═══════════════════════════════════ -->
-  <section class="proof" id="proof">
-    <div class="proof-inner">
+     SOCIAL PROOF
+═══════════════════════════════════ -->
+<section class="proof" id="proof">
+  <div class="proof-inner">
 
-      <div class="proof-header">
-        <div>
-          <h2 class="s-heading">What people<br /><span class="blue">say about this</span></h2>
-        </div>
+    <div class="proof-header">
+      <div>
+        <h2 class="s-heading">What people<br /><span class="blue">say about this</span></h2>
       </div>
-
-      <div class="cards">
-
-        <div class="card">
-          <div class="card-src"><div class="src-icon slack">#</div><span class="src-label">Slack message</span></div>
-          <p class="card-quote">"Franco doesn't just look at the data — he explains what it actually means for the business. After our discovery session we had more clarity in two hours than in three months of analytics reviews."</p>
-          <div class="card-author"><div class="avatar">MR</div><div><div class="author-name">María R.</div><div class="author-role">Head of Growth · SaaS startup</div></div></div>
-        </div>
-
-        <div class="card">
-          <div class="card-src"><div class="src-icon slack">#</div><span class="src-label">Slack message</span></div>
-          <p class="card-quote">"We were stuck in the 'let's A/B test everything' trap. Franco helped us realize we had a trust issue at checkout — not a button color problem. Total game changer."</p>
-          <div class="card-author"><div class="avatar">CS</div><div><div class="author-name">Carlos S.</div><div class="author-role">E-commerce Director</div></div></div>
-        </div>
-
-        <div class="card">
-          <div class="card-src"><div class="src-icon slack">#</div><span class="src-label">Slack message</span></div>
-          <p class="card-quote">"The audit showed our analytics were firing duplicate events. The funnel data we'd trusted for months was wrong. That alone saved us from very expensive decisions."</p>
-          <div class="card-author"><div class="avatar">LP</div><div><div class="author-name">Lucía P.</div><div class="author-role">Product Manager · Fintech</div></div></div>
-        </div>
-
-        <div class="card">
-          <div class="card-src"><div class="src-icon li">in</div><span class="src-label">LinkedIn review</span></div>
-          <p class="card-quote">"Franco identified three major friction points we'd never considered. Within the discovery process he transformed how we think about conversion entirely. Highly recommend."</p>
-          <div class="card-author"><div class="avatar">JV</div><div><div class="author-name">Jorge V.</div><div class="author-role">Co-founder · EdTech Peru</div></div></div>
-        </div>
-
-        <div class="card">
-          <div class="card-src"><div class="src-icon li">in</div><span class="src-label">LinkedIn review</span></div>
-          <p class="card-quote">"What separates Franco from others is that he insists on understanding your business model first. He won't tell you what to optimize until he knows what moves the needle."</p>
-          <div class="card-author"><div class="avatar">AT</div><div><div class="author-name">Adriana T.</div><div class="author-role">CMO · Retail brand</div></div></div>
-        </div>
-
-        <div class="card">
-          <div class="card-src"><div class="src-icon li">in</div><span class="src-label">LinkedIn review</span></div>
-          <p class="card-quote">"The CRO roadmap was genuinely strategic — a prioritized plan based on our specific data, users and funnel. We knew exactly what to test first and why."</p>
-          <div class="card-author"><div class="avatar">RF</div><div><div class="author-name">Rodrigo F.</div><div class="author-role">Digital Growth Lead</div></div></div>
-        </div>
-
-      </div>
-      <div><img class="humans-badge" src="./Assets/humans_badge_3.png" alt="Made by humans"></div>
     </div>
-  </section>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="slack-header">
+          <div class="slack-avatar">MR</div>
+          <div class="slack-meta">
+            <span class="slack-name">María R.</span>
+            <span class="slack-time">12:34 PM</span>
+          </div>
+        </div>
+        <p class="slack-msg">Hey Franco! Just wanted to share — after our discovery session we had more clarity in two hours than in three months of analytics reviews. You don't just look at data, you explain what it actually means for the business. 🙌</p>
+        <div class="slack-reactions">
+          <span class="reaction active">👍 4</span>
+          <span class="reaction">⭐ 2</span>
+          <span class="reaction">🎉 1</span>
+        </div>
+        <div class="slack-role">Head of Growth · SaaS startup</div>
+      </div>
+
+      <div class="card">
+        <div class="slack-header">
+          <div class="slack-avatar green">CS</div>
+          <div class="slack-meta">
+            <span class="slack-name">Carlos S.</span>
+            <span class="slack-time">3:12 PM</span>
+          </div>
+        </div>
+        <p class="slack-msg">We were stuck in the "let's A/B test everything" trap. Franco helped us realize we had a trust issue at checkout — not a button color problem. Total game changer. 🔥</p>
+        <div class="slack-reactions">
+          <span class="reaction active">👍 6</span>
+          <span class="reaction">😮 3</span>
+          <span class="reaction">🎯 2</span>
+        </div>
+        <div class="slack-role">E-commerce Director</div>
+      </div>
+
+      <div class="card">
+        <div class="slack-header">
+          <div class="slack-avatar yellow">LP</div>
+          <div class="slack-meta">
+            <span class="slack-name">Lucía P.</span>
+            <span class="slack-time">10:05 AM</span>
+          </div>
+        </div>
+        <p class="slack-msg">The audit showed our analytics were firing duplicate events. The funnel data we'd trusted for months was wrong. That alone saved us from very expensive decisions. 💡</p>
+        <div class="slack-reactions">
+          <span class="reaction active">🤯 5</span>
+          <span class="reaction">👍 3</span>
+          <span class="reaction">⭐ 2</span>
+        </div>
+        <div class="slack-role">Product Manager · Fintech</div>
+      </div>
+
+      <div class="card">
+        <div class="slack-header">
+          <div class="slack-avatar purple">JV</div>
+          <div class="slack-meta">
+            <span class="slack-name">Jorge V.</span>
+            <span class="slack-time">2:48 PM</span>
+          </div>
+        </div>
+        <p class="slack-msg">Franco identified three major friction points we'd never considered. Within the discovery process he transformed how we think about conversion entirely. Highly recommend 🚀</p>
+        <div class="slack-reactions">
+          <span class="reaction active">🚀 4</span>
+          <span class="reaction">👍 3</span>
+          <span class="reaction">🎉 2</span>
+        </div>
+        <div class="slack-role">Co-founder · EdTech Peru</div>
+      </div>
+
+      <div class="card">
+        <div class="slack-header">
+          <div class="slack-avatar red">AT</div>
+          <div class="slack-meta">
+            <span class="slack-name">Adriana T.</span>
+            <span class="slack-time">9:20 AM</span>
+          </div>
+        </div>
+        <p class="slack-msg">What separates Franco from others is that he insists on understanding your business model first. He won't tell you what to optimize until he knows what moves the needle. 💯</p>
+        <div class="slack-reactions">
+          <span class="reaction active">💯 5</span>
+          <span class="reaction">⭐ 3</span>
+          <span class="reaction">👍 2</span>
+        </div>
+        <div class="slack-role">CMO · Retail brand</div>
+      </div>
+
+      <div class="card">
+        <div class="slack-header">
+          <div class="slack-avatar">RF</div>
+          <div class="slack-meta">
+            <span class="slack-name">Rodrigo F.</span>
+            <span class="slack-time">4:55 PM</span>
+          </div>
+        </div>
+        <p class="slack-msg">The CRO roadmap was genuinely strategic — a prioritized plan based on our specific data, users and funnel. We knew exactly what to test first and why. 📊</p>
+        <div class="slack-reactions">
+          <span class="reaction active">📊 4</span>
+          <span class="reaction">👍 4</span>
+          <span class="reaction">🎯 3</span>
+        </div>
+        <div class="slack-role">Digital Growth Lead</div>
+      </div>
+
+    </div>
+    <div><img class="humans-badge" src="./Assets/humans_badge_3.png" alt="Made by humans"></div>
+  </div>
+</section>
 
 
   <!-- ══════════════════════════════════
@@ -318,7 +392,7 @@
   ═══════════════════════════════════ -->
   <div class="bottom-cta" id="contact">
     <span class="s-label" style="margin-bottom:24px">Ready to start?</span>
-    <h2 class="s-heading">Find where you're<br />leaving growth behind</h2>
+    <h2 class="s-heading">Find where you're leaving growth behind</h2>
     <p>You'll receive an intro pack before the call with all information about services, results, and pricing.</p>
     <a href="#" class="cta-btn red-btn">
       Book a Growth Call

@@ -117,6 +117,155 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
+      /* ── FUNNEL CHARACTER ── */
+var funnelAnim = lottie.loadAnimation({
+  container:  document.getElementById('funnelLottie'),
+  renderer:   'svg',
+  loop:       false,
+  autoplay:   false,
+  path:       './Assets/Funnel_ch.json'
+});
+
+funnelAnim.addEventListener('DOMLoaded', function () {
+  // Play idle (frames 0-79) on loop
+  funnelAnim.playSegments([0, 79], true);
+  funnelAnim.loop = true;
+
+  var funnelEl = document.getElementById('funnelChar');
+
+  // Float animation
+  gsap.to(funnelEl, {
+    y:        '+=14',
+    duration: 2.2,
+    ease:     'sine.inOut',
+    yoyo:     true,
+    repeat:   -1
+  });
+
+  // Draggable
+  Draggable.create(funnelEl, {
+    type: 'x,y',
+    edgeResistance: 0.6,
+    onPress: function () {
+      gsap.killTweensOf(funnelEl);
+      gsap.to(funnelEl, { scale: 1.05, duration: 0.1 });
+      funnelEl.style.zIndex = 999;
+      // Ojos cerrados
+      funnelAnim.loop = false;
+      funnelAnim.playSegments([80, 110], true);
+    },
+    onRelease: function () {
+      gsap.to(funnelEl, { scale: 1, duration: 0.15 });
+      // Vuelve al idle
+      funnelAnim.loop = true;
+      funnelAnim.playSegments([0, 79], true);
+      // Retoma float
+      gsap.to(funnelEl, {
+        y:        '+=14',
+        duration: 2.2,
+        ease:     'sine.inOut',
+        yoyo:     true,
+        repeat:   -1
+      });
+    }
+  });
+
+  // Ojos siguen el mouse
+  var svg = funnelEl.querySelector('svg');
+
+  window.addEventListener('mousemove', function (e) {
+    if (!svg) return;
+    var rect   = funnelEl.getBoundingClientRect();
+    var charCX = rect.left + rect.width  / 2;
+    var charCY = rect.top  + rect.height / 2;
+
+    var dx   = e.clientX - charCX;
+    var dy   = e.clientY - charCY;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    var maxMove = 5; // px máx que se mueve la pupila
+
+    var mx = (dx / Math.max(dist, 1)) * Math.min(dist * 0.08, maxMove);
+    var my = (dy / Math.max(dist, 1)) * Math.min(dist * 0.08, maxMove);
+
+    // Las pupilas son las capas 2 y 5 (índice 1 y 4 en el array)
+    var lottieInstance = funnelAnim.renderer.elements;
+    if (!lottieInstance) return;
+
+    // Mueve las pupilas via transform en el SVG
+    var pupils = svg.querySelectorAll('[data-name="Pupila izquierda"], [data-name="Pupila derecha"]');
+    pupils.forEach(function (p) {
+      p.style.transform = 'translate(' + mx + 'px, ' + my + 'px)';
+    });
+  });
+});
+
+/* ── KEYWORD CHARACTER ── */
+var keywrdAnim = lottie.loadAnimation({
+  container:  document.getElementById('keywrdLottie'),
+  renderer:   'svg',
+  loop:       false,
+  autoplay:   false,
+  path:       './Assets/Keywrd_ch.json'
+});
+
+keywrdAnim.addEventListener('DOMLoaded', function () {
+  keywrdAnim.playSegments([0, 79], true);
+  keywrdAnim.loop = true;
+
+  var keywrdEl = document.getElementById('keywrdChar');
+
+  gsap.to(keywrdEl, {
+    y:        '+=14',
+    duration: 2.6,
+    ease:     'sine.inOut',
+    yoyo:     true,
+    repeat:   -1,
+    delay:    0.4
+  });
+
+  Draggable.create(keywrdEl, {
+    type: 'x,y',
+    edgeResistance: 0.6,
+    onPress: function () {
+      gsap.killTweensOf(keywrdEl);
+      gsap.to(keywrdEl, { scale: 1.05, duration: 0.1 });
+      keywrdEl.style.zIndex = 999;
+      keywrdAnim.loop = false;
+      keywrdAnim.playSegments([80, 110], true);
+    },
+    onRelease: function () {
+      gsap.to(keywrdEl, { scale: 1, duration: 0.15 });
+      keywrdAnim.loop = true;
+      keywrdAnim.playSegments([0, 79], true);
+      gsap.to(keywrdEl, {
+        y:        '+=14',
+        duration: 2.6,
+        ease:     'sine.inOut',
+        yoyo:     true,
+        repeat:   -1
+      });
+    }
+  });
+
+  var keywrdSvg = keywrdEl.querySelector('svg');
+  window.addEventListener('mousemove', function (e) {
+    if (!keywrdSvg) return;
+    var rect   = keywrdEl.getBoundingClientRect();
+    var charCX = rect.left + rect.width  / 2;
+    var charCY = rect.top  + rect.height / 2;
+    var dx     = e.clientX - charCX;
+    var dy     = e.clientY - charCY;
+    var dist   = Math.sqrt(dx * dx + dy * dy);
+    var maxMove = 5;
+    var mx = (dx / Math.max(dist, 1)) * Math.min(dist * 0.08, maxMove);
+    var my = (dy / Math.max(dist, 1)) * Math.min(dist * 0.08, maxMove);
+    var pupils = keywrdSvg.querySelectorAll('[data-name="Pupila izquierda"], [data-name="Pupila derecha"]');
+    pupils.forEach(function (p) {
+      p.style.transform = 'translate(' + mx + 'px, ' + my + 'px)';
+    });
+  });
+});
+
     });
   });
 
