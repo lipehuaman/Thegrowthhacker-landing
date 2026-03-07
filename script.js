@@ -96,8 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       Draggable.create('.sticker', {
-        type:           'x,y',
-        edgeResistance: 0.6,
+        type:                      'x,y',
+        edgeResistance:            0.6,
+        allowNativeTouchScrolling: false,
         onPress: function () {
           gsap.killTweensOf(this.target);
           gsap.to(this.target, { scale: 1.1, duration: 0.12 });
@@ -127,11 +128,15 @@ var funnelAnim = lottie.loadAnimation({
 });
 
 funnelAnim.addEventListener('DOMLoaded', function () {
-  // Play idle (frames 0-79) on loop
   funnelAnim.playSegments([0, 79], true);
   funnelAnim.loop = true;
 
   var funnelEl = document.getElementById('funnelChar');
+
+  /* ── Capa transparente encima del SVG para capturar touch en iOS ── */
+  var funnelOverlay = document.createElement('div');
+  funnelOverlay.style.cssText = 'position:absolute;inset:0;z-index:2;touch-action:none;';
+  funnelEl.appendChild(funnelOverlay);
 
   // Float animation
   gsap.to(funnelEl, {
@@ -145,7 +150,9 @@ funnelAnim.addEventListener('DOMLoaded', function () {
   // Draggable
   Draggable.create(funnelEl, {
     type: 'x,y',
+    trigger: funnelOverlay,
     edgeResistance: 0.6,
+    allowNativeTouchScrolling: false,
     onPress: function () {
       gsap.killTweensOf(funnelEl);
       gsap.to(funnelEl, { scale: 1.05, duration: 0.1 });
@@ -214,6 +221,11 @@ keywrdAnim.addEventListener('DOMLoaded', function () {
 
   var keywrdEl = document.getElementById('keywrdChar');
 
+  /* ── Capa transparente encima del SVG para capturar touch en iOS ── */
+  var keywrdOverlay = document.createElement('div');
+  keywrdOverlay.style.cssText = 'position:absolute;inset:0;z-index:2;touch-action:none;';
+  keywrdEl.appendChild(keywrdOverlay);
+
   gsap.to(keywrdEl, {
     y:        '+=14',
     duration: 2.6,
@@ -225,7 +237,9 @@ keywrdAnim.addEventListener('DOMLoaded', function () {
 
   Draggable.create(keywrdEl, {
     type: 'x,y',
+    trigger: keywrdOverlay,
     edgeResistance: 0.6,
+    allowNativeTouchScrolling: false,
     onPress: function () {
       gsap.killTweensOf(keywrdEl);
       gsap.to(keywrdEl, { scale: 1.05, duration: 0.1 });

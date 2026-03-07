@@ -149,6 +149,12 @@ body {
   height: 100%;
 }
 
+/* El SVG de Lottie no debe capturar eventos — el overlay lo hace */
+#funnelLottie svg,
+#keywrdLottie svg {
+  pointer-events: none;
+}
+
 /* ── FLOATING STICKERS ── */
 .sticker {
   position: absolute;
@@ -1124,10 +1130,88 @@ footer {
     max-width: 100%;
   }
 
-  /* Oculta stickers y personajes en mobile — tapan el texto */
+  /* Stickers y personajes en mobile — visibles, reposicionados */
   .sticker,
   .funnel-character {
-    display: none;
+    display: block;
+    position: absolute;
+    touch-action: none;
+  }
+
+  /* Personajes Lottie */
+  #keywrdChar {
+    top: 6% !important;
+    left: -2% !important;
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  /* Funnel — debajo del título */
+  #funnelChar {
+    bottom: 14% !important;
+    top: auto !important;
+    right: -4% !important;
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  /* Stickers — tamaño legible, texto en 1 línea */
+  .sticker {
+    font-size: 16px !important;
+    padding: 7px 14px !important;
+    white-space: nowrap !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+
+  /* CRO — centro izquierda */
+  .sticker.white {
+    top: 38% !important;
+    left: 4% !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  /* Analytics — derecha alta */
+  .sticker.green {
+    top: 18% !important;
+    right: 3% !important;
+    left: auto !important;
+    bottom: auto !important;
+  }
+
+  /* SEO — derecha baja */
+  .sticker.yellow {
+    bottom: 24% !important;
+    right: 3% !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  /* Data — derecha media, forzar ancho al contenido */
+  .sticker.blue {
+    top: 46% !important;
+    right: 3% !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: auto !important;
+    display: inline-flex !important;
+  }
+
+  /* Funnel Audit — izquierda alta */
+  .sticker.red {
+    top: 26% !important;
+    left: 2% !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  /* A/B Testing — izquierda baja */
+  .sticker.purple {
+    bottom: 20% !important;
+    left: 2% !important;
+    top: auto !important;
+    right: auto !important;
   }
 
   .cta-btn {
