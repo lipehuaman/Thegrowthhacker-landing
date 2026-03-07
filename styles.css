@@ -2,6 +2,37 @@
    The Growth Hacker — Homepage Styles
    ═══════════════════════════════════════════ */
 
+/* ── FONTS ── */
+@font-face {
+  font-family: "Salesforce Sans";
+  src: url("https://db.onlinewebfonts.com/t/0fadaa21fcac88ceee0bb8da992c221b.eot");
+  src: url("https://db.onlinewebfonts.com/t/0fadaa21fcac88ceee0bb8da992c221b.eot?#iefix") format("embedded-opentype"),
+       url("https://db.onlinewebfonts.com/t/0fadaa21fcac88ceee0bb8da992c221b.woff2") format("woff2"),
+       url("https://db.onlinewebfonts.com/t/0fadaa21fcac88ceee0bb8da992c221b.woff") format("woff"),
+       url("https://db.onlinewebfonts.com/t/0fadaa21fcac88ceee0bb8da992c221b.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PPNeueMontreal";
+  src: url("./Assets/PPNeueMontreal-Book.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPNeueMontreal";
+  src: url("./Assets/PPNeueMontreal-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPNeueMontreal";
+  src: url("./Assets/PPNeueMontreal-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
 /* ── RESET & VARIABLES ── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -602,29 +633,11 @@ body {
   gap: 20px;
 }
 
-.proof-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 100px;
-  padding: 8px 20px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
-  font-weight: 500;
-}
-
-.proof-badge::before {
-  content: '✦';
-  color: var(--yellow);
-  font-size: 9px;
-}
-
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  align-items: start;
 }
 
 /* ── SLACK CARD ── */
@@ -663,11 +676,6 @@ body {
   flex-shrink: 0;
 }
 
-.slack-avatar.green  { background: #1DB85C; }
-.slack-avatar.yellow { background: #F5A800; color: #000; }
-.slack-avatar.purple { background: #8B6FE8; }
-.slack-avatar.red    { background: #FF6B4A; }
-
 .slack-meta {
   display: flex;
   align-items: baseline;
@@ -679,18 +687,6 @@ body {
   font-weight: 700;
   font-size: 15px;
   color: #1a1a1a;
-}
-
-.slack-time {
-  font-size: 12px;
-  color: #999;
-}
-
-.slack-msg {
-  font-size: 15px;
-  color: #1a1a1a;
-  line-height: 1.65;
-  margin-bottom: 14px;
 }
 
 .slack-reactions {
@@ -723,13 +719,6 @@ body {
 .reaction:hover {
   background: #e8effe;
   border-color: #3171FF;
-}
-
-.slack-role {
-  font-size: 11px;
-  color: #999;
-  border-top: 1px solid #f0f0f0;
-  padding-top: 10px;
 }
 
 .humans-badge {
@@ -811,40 +800,438 @@ footer {
 .footer-copy a { color: inherit; }
 
 
+.card-msg {
+  font-size: 15px;
+  color: #1a1a1a;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+/* ══════════════════════════════
+   SOCIAL PROOF — PLATFORM CARDS
+══════════════════════════════ */
+
+/* ── SLACK ── */
+.card--slack {
+  background: #1a1d21;
+  border-radius: 8px;
+  padding: 16px 20px;
+  border: 1px solid #2d2f33;
+  font-family: "Salesforce Sans", "Lato", sans-serif;
+}
+
+.card--slack:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+}
+
+.slack-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.slack-channel {
+  font-size: 12px;
+  color: #ababad;
+  font-weight: 700;
+  font-family: "Salesforce Sans", sans-serif;
+}
+
+.slack-timestamp {
+  font-size: 11px;
+  color: #616061;
+}
+
+.card--slack .slack-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.card--slack .slack-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  flex-shrink: 0;
+  font-family: "Salesforce Sans", sans-serif;
+}
+
+.card--slack .slack-name {
+  font-weight: 900;
+  font-size: 15px;
+  color: #d1d2d3;
+  font-family: "Salesforce Sans", sans-serif;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.card--slack .card-msg {
+  font-size: 14px;
+  color: #d1d2d3;
+  line-height: 1.6;
+  margin: 4px 0 10px 46px;
+  font-family: "Salesforce Sans", sans-serif;
+}
+
+/* Mention: texto azul con subrayado amarillo */
+.slack-mention {
+  color: #1d9bd1;
+  background: rgba(29, 155, 209, 0.1);
+  border-radius: 3px;
+  padding: 0 2px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #FFB800;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+.card--slack .slack-reactions {
+  margin-left: 46px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.card--slack .reaction {
+  font-size: 12px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #ababad;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: "Salesforce Sans", sans-serif;
+}
+
+.card--slack .reaction.active {
+  background: rgba(29, 155, 209, 0.15);
+  border-color: #1d9bd1;
+  color: #1d9bd1;
+}
+
+.card--slack .reaction:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── UPWORK ── */
+.card--upwork {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  border: 1px solid #e8e8e8;
+  font-family: "PPNeueMontreal", sans-serif;
+}
+
+.upwork-header {
+  margin-bottom: 12px;
+}
+
+.upwork-stars {
+  color: #14a800;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.upwork-score {
+  font-size: 13px;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-family: "PPNeueMontreal", sans-serif;
+}
+
+.upwork-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  font-family: "PPNeueMontreal", sans-serif;
+}
+
+.upwork-meta-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.upwork-meta-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.upwork-info {
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "PPNeueMontreal", sans-serif;
+}
+
+.upwork-tag {
+  display: inline-block;
+  background: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 12px;
+  font-family: "PPNeueMontreal", sans-serif;
+}
+
+.card--upwork .card-msg {
+  font-size: 14px;
+  color: #1a1a1a;
+  line-height: 1.65;
+  margin-bottom: 14px;
+  font-family: "PPNeueMontreal", sans-serif;
+}
+
+.upwork-reviewer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.upwork-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+  font-family: "PPNeueMontreal", sans-serif;
+}
+
+.upwork-reviewer-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  font-family: "PPNeueMontreal", sans-serif;
+}
+
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
+
+
+  /* ── BOTÓN — nunca en 2 líneas ── */
+.cta-btn, .red-btn {
+  font-size: 16px;
+  padding: 14px 24px;
+  width: auto;
+  white-space: nowrap;
+}
+
+/* ── STEPS — más compactos ── */
+.step {
+  grid-template-columns: 50px 1fr;
+  padding: 12px 0;
+}
+
+.step-inner {
+  padding: 16px;
+}
+
+.step-title {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.step-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.step-chips {
+  display: none; /* oculta chips en mobile para reducir altura */
+}
+
+.step-outcome {
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+/* ── BUBBLE ORBIT — layout estático en mobile ── */
+.bubble-scene {
+  height: auto !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+.bubble-center {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.bubble {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  max-width: 320px;
+  font-size: 14px;
+}
+
+  /* NAV */
+  .nav-btn {
+    font-size: 14px;
+    padding: 6px 16px;
+    white-space: nowrap;
+  }
+
+  /* HERO */
+  .hero { padding: 100px 24px 60px; }
   .hero-circle, .hero-circle2 { display: none; }
 
-  .services-top { grid-template-columns: 1fr; }
+  .hero-title {
+    font-size: clamp(48px, 14vw, 80px);
+  }
 
-  .orbit-scene { height: 320px; }
-  .orbit-title { font-size: 48px; }
-  .orbit-item  { display: none; }
+  .hero-sub {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  /* Oculta stickers y personajes en mobile — tapan el texto */
+  .sticker,
+  .funnel-character {
+    display: none;
+  }
+
+  .cta-btn {
+    font-size: 18px;
+    padding: 14px 28px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* SERVICES */
+  .services { padding: 60px 24px 80px; }
+
+  .services-header {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .services-big-title { font-size: clamp(48px, 14vw, 80px); }
+
+  .bubble-center {
+  max-width: 200px;
+}
+
+  .bubble-scene {
+    height: 480px;
+  }
+
+  .bubble {
+    width: 150px !important;
+    font-size: 12px;
+  }
+
+  /* JOURNEY */
+  .journey { padding: 60px 24px; }
+
+  .journey-inner { max-width: 100%; }
+
+  .journey-header { margin-bottom: 48px; }
 
   .step {
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: 60px 1fr;
     min-height: auto;
+    padding: 16px 0;
   }
 
-  .step.left  .step-card,
+  .step.left .step-card,
   .step.right .step-card {
-    grid-column: 2; grid-row: 1;
+    grid-column: 2;
+    grid-row: 1;
     padding: 0 0 0 16px;
-    transform: translateX(0);
+    transform: translateX(0) !important;
   }
 
-  .step.left  .step-mid,
+  .step.left .step-mid,
   .step.right .step-mid {
-    grid-column: 1; grid-row: 1;
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .step-empty { display: none; }
 
-  .line-svg-wrap { left: 25px; transform: none; }
+  .line-svg-wrap {
+    left: 30px;
+    transform: none;
+  }
 
-  .services, .proof, .journey, .bottom-cta { padding-left: 24px; padding-right: 24px; }
+  .step-dot {
+    width: 48px;
+    height: 48px;
+  }
 
-  footer { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+  .step-dot span { font-size: 14px; }
 
+  .step-title { font-size: 18px; }
+  .step-desc  { font-size: 13px; }
+
+  /* SOCIAL PROOF */
+  .proof { padding: 60px 24px; }
   .proof-header { flex-direction: column; align-items: flex-start; }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card { padding: 18px; }
+
+  /* BOTTOM CTA */
+  .bottom-cta { padding: 80px 24px; }
+  .bottom-cta p { font-size: 15px; }
+
+  .red-btn {
+    font-size: 18px;
+    padding: 14px 28px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* FOOTER */
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+    gap: 20px;
+  }
+
+  .footer-links { flex-wrap: wrap; gap: 16px; }
 }
