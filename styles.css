@@ -641,7 +641,7 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   align-items: start;
 }
@@ -865,6 +865,15 @@ footer {
   color: #fff;
   flex-shrink: 0;
   font-family: "Salesforce Sans", sans-serif;
+  overflow: hidden;
+  background: none;
+}
+
+.card--slack .slack-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .card--slack .slack-name {
@@ -934,6 +943,7 @@ footer {
   padding: 20px 24px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   border: 1px solid #e8e8e8;
+  position: relative;
   font-family: "PPNeueMontreal", sans-serif;
 }
 
@@ -1018,6 +1028,14 @@ footer {
   border-top: 1px solid #f0f0f0;
 }
 
+.upwork-reviewer--top {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  padding-top: 0;
+  border-top: none;
+}
+
 .upwork-avatar {
   width: 32px;
   height: 32px;
@@ -1030,6 +1048,15 @@ footer {
   font-weight: 700;
   color: #555;
   font-family: "PPNeueMontreal", sans-serif;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.upwork-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .upwork-reviewer-name {
