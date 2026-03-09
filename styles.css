@@ -643,7 +643,6 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  align-items: start;
 }
 
 /* ── SLACK CARD ── */
@@ -738,10 +737,34 @@ body {
 /* ── BOTTOM CTA ── */
 .bottom-cta {
   padding: 120px 48px;
-  text-align: center;
   background: var(--bg);
   position: relative;
   overflow: hidden;
+}
+
+.bottom-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta-avatar {
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  flex-shrink: 0;
+  border: 3px solid rgba(255,255,255,0.12);
+}
+
+.bottom-cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .bottom-cta::before {
@@ -756,15 +779,15 @@ body {
 }
 
 .bottom-cta .s-heading {
-  max-width: 780px;
-  margin: 0 auto 16px;
+  max-width: 640px;
+  margin: 0 0 16px;
 }
 
 .bottom-cta p {
   font-size: 17px;
   color: rgba(255, 255, 255, 0.5);
-  max-width: 600px;
-  margin: 0 auto 40px;
+  max-width: 540px;
+  margin: 0 0 40px;
   line-height: 1.6;
 }
 
@@ -830,6 +853,27 @@ footer {
   box-shadow: 0 6px 24px rgba(0,0,0,0.4);
 }
 
+.card-platform-logo {
+  height: 20px;
+  width: auto;
+  display: block;
+}
+
+.slack-channel-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.slack-channel-group .card-platform-logo {
+  height: 16px;
+  margin-bottom: 0;
+}
+
+.upwork-header .card-platform-logo {
+  margin-bottom: 10px;
+}
+
 .slack-top-bar {
   display: flex;
   justify-content: space-between;
@@ -851,9 +895,9 @@ footer {
 
 .card--slack .slack-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 0;
+  margin-bottom: 4px;
 }
 
 .card--slack .slack-avatar {
@@ -952,7 +996,7 @@ footer {
 }
 
 .upwork-stars {
-  color: #14a800;
+  color: #6FDA44;
   font-size: 17px;
   display: flex;
   align-items: center;
@@ -1327,6 +1371,8 @@ footer {
 
   /* BOTTOM CTA */
   .bottom-cta { padding: 80px 24px; }
+  .bottom-cta-inner { flex-direction: column; gap: 28px; }
+  .cta-avatar { width: 100px; height: 100px; }
   .bottom-cta p { font-size: 15px; }
 
   .red-btn {
