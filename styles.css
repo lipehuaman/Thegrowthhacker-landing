@@ -896,9 +896,12 @@ footer {
 .card--slack .slack-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 10px;
   margin-bottom: 4px;
+}
+
+.card--slack .slack-channel-group {
+  margin-left: auto;
 }
 
 .card--slack .slack-avatar {
